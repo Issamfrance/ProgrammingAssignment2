@@ -1,6 +1,3 @@
-## Put comments here that give an overall description of what your
-## functions do
-
 ## makeCacheMatrix creates a list containing a function to
 # set a value of the matrix
 # get a value of the matrix
@@ -26,7 +23,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## If not, it computes the inverse, and sets the value in cache via setinvmat function.
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+        
         inv <- x$getinvmat()
         if (!is.null(inv)) {
                 message ("Getting cached data!")
@@ -38,3 +35,47 @@ cacheSolve <- function(x, ...) {
         x$setinvmat(inv)     
         inv
 }
+
+## Function test
+## > x = rbind (c(1, 2, 3), c(0, 1, 5), c(5, 6, 0))
+## > x
+##       [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    0    1    5
+## [3,]    5    6    0
+## > m <- makeCacheMatrix(x)
+## > m$getvalmat()
+##       [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    0    1    5
+## [3,]    5    6    0
+
+
+## This is the 1st run, so no cache.
+## > cacheSolve(m)
+##       [,1] [,2] [,3]
+## [1,]   -6  3.6  1.4
+## [2,]    5 -3.0 -1.0
+## [3,]   -1  0.8  0.2
+
+## If a 2nd run is done
+## > cacheSolve(m)
+## Getting cached data!
+##         [,1] [,2] [,3]
+##  [1,]   -6  3.6  1.4
+##  [2,]    5 -3.0 -1.0
+##  [3,]   -1  0.8  0.2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
